@@ -42,3 +42,7 @@ Thumbs.db
 build-steps.md
 portfolio-concept.html
 project-list.md
+
+# Agent instruction files (local-only)
+AGENTS.md
+CLAUDE.md
