@@ -14,8 +14,7 @@ const plain = perf.filter((m) => m.plain);
           <h2 class={sectionTitle}>Performance by design</h2>
         </div>
         <div class={sectionNote}>
-          Lab numbers pending a fresh Lighthouse run — the payload stats below
-          are straight from the build.
+          Median of three Lighthouse runs (mobile) against the live site.
         </div>
       </div>
       <div
@@ -46,9 +45,10 @@ const plain = perf.filter((m) => m.plain);
           <div class={eyebrow}>PLAIN ENGLISH</div>
           <p class="font-sans text-body leading-[1.7] text-ink-dim">
             If those numbers look like jargon, here's the plain version: this
-            page loads almost instantly. No JavaScript to download or parse,
-            just one small file to fetch — about 60 KB total, less than a single
-            photo. On most visits it's on screen before you finish blinking.
+            page loads almost instantly. No JavaScript to download or parse —
+            just a few files, mostly fonts, totalling about 130 KB, less than a
+            single photo. On most visits it's on screen within a second and a
+            half.
           </p>
         </div>
         <div>

@@ -28,6 +28,9 @@ pnpm-debug.log*
 .vercel/
 .lighthouseci/
 
+# Lighthouse test reports
+lighthouse/
+
 # macOS
 .DS_Store
 
