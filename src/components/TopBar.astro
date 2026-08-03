@@ -1,0 +1,64 @@
+---
+import { profile } from "../data/profile";
+import { wrap, focusRing } from "../lib/styles";
+
+const navLink =
+  "font-mono text-body-sm font-medium tracking-[0.03em] text-ink border-b border-transparent pb-1 transition hover:border-primary";
+const mobileLink =
+  "font-mono text-body-sm font-medium tracking-[0.03em] text-ink border-b border-line py-4 last:border-b-0 transition hover:text-primary";
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 flex h-22 items-center justify-between border-b border-line bg-[rgba(36,85,201,0.45)] backdrop-blur-[8px]"
+>
+  <div class={`${wrap} flex items-center justify-between`}>
+    <div
+      class="flex items-center gap-2.5 font-mono text-body-sm font-medium tracking-[0.03em] text-ink"
+    >
+      <span class="inline-block h-2.5 w-2.5 bg-primary"></span>
+      J. OLIVEIRA
+    </div>
+    <nav class="flex gap-10 max-[900px]:hidden" aria-label="Primary">
+      <a class={`${navLink} ${focusRing}`} href="#profile">01 PROFILE</a>
+      <a class={`${navLink} ${focusRing}`} href="#stack">02 STACK</a>
+      <a class={`${navLink} ${focusRing}`} href="#builds">03 BUILDS</a>
+      <a class={`${navLink} ${focusRing}`} href="#services">04 SERVICES</a>
+      <a class={`${navLink} ${focusRing}`} href="#contact">05 CONTACT</a>
+    </nav>
+    <div
+      class="flex items-center gap-2 font-mono text-body-sm font-medium tracking-[0.03em] text-ink"
+    >
+      <span class="h-1.75 w-1.75 shrink-0 rounded-full bg-good"
+      ></span>
+      {profile.status.toUpperCase()}
+    </div>
+    <button
+      class={`group hidden h-8 w-8 flex-col cursor-pointer justify-center gap-1.25 border-none bg-transparent p-0 max-[900px]:flex ${focusRing}`}
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span
+        class="block h-px w-full bg-ink transition group-[.active]:[transform:translateY(0.375rem)_rotate(45deg)]"
+      ></span>
+      <span
+        class="block h-px w-full bg-ink transition group-[.active]:opacity-0"
+      ></span>
+      <span
+        class="block h-px w-full bg-ink transition group-[.active]:[transform:translateY(-0.375rem)_rotate(-45deg)]"
+      ></span>
+    </button>
+    <slot name="theme-toggle" />
+  </div>
+</header>
+<nav
+  class="fixed top-22 left-0 right-0 z-[49] hidden flex-col border-b border-line bg-surface px-0 py-2 pb-5 [&.active]:flex"
+  aria-label="Mobile"
+>
+  <div class={`${wrap} flex flex-col`}>
+    <a class={`${mobileLink} ${focusRing}`} href="#profile">01 PROFILE</a>
+    <a class={`${mobileLink} ${focusRing}`} href="#stack">02 STACK</a>
+    <a class={`${mobileLink} ${focusRing}`} href="#builds">03 BUILDS</a>
+    <a class={`${mobileLink} ${focusRing}`} href="#services">04 SERVICES</a>
+    <a class={`${mobileLink} ${focusRing}`} href="#contact">05 CONTACT</a>
+  </div>
+</nav>

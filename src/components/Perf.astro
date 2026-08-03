@@ -1,0 +1,73 @@
+---
+import { perf } from "../data/perf";
+import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } from "../lib/styles";
+
+const plain = perf.filter((m) => m.plain);
+---
+
+<section class={section} id="speed">
+  <div class={wrap}>
+    <div class={band}>
+      <div class={sectionHead}>
+        <div>
+          <div class={eyebrow}>SPEED SPEC</div>
+          <h2 class={sectionTitle}>Performance by design</h2>
+        </div>
+        <div class={sectionNote}>
+          Lab numbers pending a fresh Lighthouse run — the payload stats below
+          are straight from the build.
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[repeat(auto-fill,minmax(9.375rem,1fr))] gap-px border border-line bg-line"
+      >
+        {
+          perf.map((m) => (
+            <div class="flex min-h-18 flex-col justify-between gap-2 bg-surface p-4 font-mono">
+              <span class="flex items-center gap-1.5">
+                <span
+                  class={`h-1.25 w-1.25 rounded-full ${m.value === "—" ? "bg-line" : "bg-good"}`}
+                />
+                <span
+                  class={`text-code font-semibold ${m.value === "—" ? "text-dim" : "text-good"}`}
+                >
+                  {m.value}
+                </span>
+              </span>
+              <span class="text-micro text-ink-dim">{m.label}</span>
+            </div>
+          ))
+        }
+      </div>
+      <div
+        class="mt-10 grid grid-cols-[1.1fr_0.9fr] items-start gap-15 max-[820px]:grid-cols-1"
+      >
+        <div>
+          <div class={eyebrow}>PLAIN ENGLISH</div>
+          <p class="font-sans text-body leading-[1.7] text-ink-dim">
+            If those numbers look like jargon, here's the plain version: this
+            page loads almost instantly. No JavaScript to download or parse,
+            just one small file to fetch — about 60 KB total, less than a single
+            photo. On most visits it's on screen before you finish blinking.
+          </p>
+        </div>
+        <div>
+          <div class="border-t border-line">
+            {
+              plain.map((m) => (
+                <div class="grid grid-cols-[5rem_1fr] items-baseline gap-6 border-b border-line py-4.5 max-[700px]:grid-cols-[4rem_1fr]">
+                  <span class="font-mono text-ui-sm text-primary">
+                    {m.label}
+                  </span>
+                  <p class="font-sans text-body-sm leading-[1.6] text-ink-dim">
+                    {m.plain}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

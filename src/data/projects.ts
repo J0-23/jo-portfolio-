@@ -9,6 +9,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "P-01",
+    name: "Portfolio — performance build",
+    description:
+      "This site, rebuilt for speed: React and shadcn removed, 303 dependencies dropped, CSS cut ~36%, zero client-side JavaScript, static prerender.",
+    tags: ["Astro", "Tailwind", "Lighthouse"],
+    slug: "portfolio-perf",
+    link: "#",
+  },
+  {
     id: "P-05",
     name: "Task Flow",
     description:

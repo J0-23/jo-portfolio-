@@ -1,0 +1,52 @@
+---
+import { projects } from "../data/projects";
+import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } from "../lib/styles";
+---
+
+<section class={section} id="builds">
+  <div class={wrap}>
+    <div class={band}>
+      <div class={sectionHead}>
+        <div>
+          <div class={eyebrow}>BUILD LOG</div>
+          <h2 class={sectionTitle}>Shipped builds</h2>
+        </div>
+        <div class={sectionNote}>
+          Click a card for the full spec — stack, description, live demo.
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[repeat(auto-fill,minmax(18.75rem,1fr))] gap-px border border-line bg-line"
+      >
+        {
+          projects.map((p) => (
+            <article class="flex min-h-52.5 flex-col bg-surface p-7 transition hover:bg-surface-2">
+              <div class="mb-4.5 flex items-start justify-between">
+                <span class="font-mono text-meta tracking-[0.06em] text-primary">
+                  {p.id}
+                </span>
+                <span class="flex items-center gap-1.5 font-mono text-micro-sm text-dim">
+                  <span class="h-1.25 w-1.25 rounded-full bg-good" />
+                  LIVE
+                </span>
+              </div>
+              <div class="mb-2.5 text-title font-bold text-ink">
+                {p.name}
+              </div>
+              <div class="flex-1 text-ui leading-[1.55] text-ink-dim">
+                {p.description}
+              </div>
+              <div class="mt-4.5 flex flex-wrap gap-1.5">
+                {p.tags.map((t) => (
+                  <span class="border border-line px-2 py-1 font-mono text-micro text-ink-dim">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

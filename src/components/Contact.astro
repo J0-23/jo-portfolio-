@@ -1,0 +1,55 @@
+---
+import { profile } from "../data/profile";
+import { wrap, band, sectionBase, eyebrow, focusRing, primaryBtn } from "../lib/styles";
+
+const channels: Record<string, string> = {
+  LinkedIn: "PRIMARY",
+  GitHub: "CODE",
+  "Twitter / X": "SOCIAL",
+};
+---
+
+<section class={sectionBase} id="contact">
+  <div class={wrap}>
+    <div class={band}>
+      <div
+        class="grid grid-cols-[1.1fr_0.9fr] items-end gap-15 max-[820px]:grid-cols-1"
+      >
+        <div>
+          <div class={eyebrow}>TRANSMIT</div>
+          <h2
+            class="text-h3 font-extrabold leading-[1.05] tracking-[-0.01em] text-ink"
+          >
+            Let's talk<br />shop<span class="text-primary">.</span>
+          </h2>
+          <p class="mt-5 max-w-110 text-body text-ink-dim">
+            Hiring, or have a project in mind? Message me on LinkedIn and I'll
+            get back to you. Code and commit history are on GitHub if you want
+            to look first.
+          </p>
+        </div>
+        <div class="border border-line bg-surface p-8">
+          {
+            profile.socials.map((s) => (
+              <div class="flex items-center justify-between border-b border-line py-4 last:border-b-0">
+                <span class="font-mono text-meta tracking-[0.06em] text-dim">
+                  {channels[s.label] ?? "SOCIAL"}
+                </span>
+                <a
+                  class={`flex items-center gap-2.5 font-mono text-ui text-ink transition hover:text-primary ${focusRing}`}
+                  href={s.url}
+                  target="_blank"
+                >
+                  {s.label} <span class="text-primary">↗</span>
+                </a>
+              </div>
+            ))
+          }
+          <a class={`${primaryBtn} mt-7`} href="#" target="_blank"
+            >Message me on LinkedIn →</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

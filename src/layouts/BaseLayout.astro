@@ -1,0 +1,90 @@
+---
+import "../styles/global.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/800.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "@fontsource/ibm-plex-mono/600.css";
+import TopBar from "../components/TopBar.astro";
+import { profile } from "../data/profile";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Jorge Oliveira | Software Developer",
+  description = "Jorge Oliveira is a full-stack developer in Portugal working with JavaScript, React, Node.js, and Tailwind CSS. Open to full-time roles and freelance projects.",
+} = Astro.props;
+
+const siteUrl = Astro.site;
+const canonical = siteUrl ? new URL(Astro.url.pathname, siteUrl) : Astro.url;
+
+const sameAs = profile.socials.map((s) => s.url).filter((u) => u && u !== "#");
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: "Full-stack Developer",
+  url: siteUrl?.toString() ?? canonical.toString(),
+  ...(sameAs.length > 0 ? { sameAs } : {}),
+};
+---
+
+<!doctype html>
+<html
+  lang="en"
+  class="scroll-smooth text-[clamp(16px,calc(5.44px+0.978vh),19.52px)] motion-reduce:scroll-auto"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonical} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="author" content={profile.name} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#fafaf7" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jorge Oliveira" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
+  </head>
+  <body
+    class="bg-bg font-sans text-ink selection:bg-primary selection:text-white bg-[linear-gradient(var(--color-grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--color-grid-line)_1px,transparent_1px)] bg-size-[6rem_6rem] bg-position-[-1px_-1px]"
+  >
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-60 focus:bg-primary focus:px-4 focus:py-2 focus:font-mono focus:text-ui-sm focus:text-white"
+      >Skip to content</a
+    >
+    <TopBar />
+    <main id="main" class="pt-22">
+      <slot />
+    </main>
+    <footer class="bg-bg py-7.5 font-mono text-foot text-dim">
+      <div
+        class="mx-auto flex w-full max-w-[1920px] flex-wrap justify-between gap-2 px-[min(8vw,6rem)] max-[820px]:px-[6vw]"
+      >
+        <span>© 2026 JORGE OLIVEIRA</span>
+        <span>BUILT WITH ASTRO — HOSTED ON VERCEL</span>
+      </div>
+    </footer>
+  </body>
+</html>
