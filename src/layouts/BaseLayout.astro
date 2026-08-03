@@ -67,7 +67,7 @@ const jsonLd = {
     />
   </head>
   <body
-    class="bg-bg font-sans text-ink selection:bg-primary selection:text-white bg-[linear-gradient(var(--color-grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--color-grid-line)_1px,transparent_1px)] bg-size-[6rem_6rem] bg-position-[-1px_-1px]"
+    class="bg-bg font-sans text-ink selection:bg-primary selection:text-white bg-[linear-gradient(var(--color-grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--color-grid-line)_1px,transparent_1px)] bg-size-[6rem_6rem] bg-position-[-1px_-1px] flex min-h-dvh flex-col"
   >
     <a
       href="#main"
@@ -75,7 +75,7 @@ const jsonLd = {
       >Skip to content</a
     >
     <TopBar />
-    <main id="main" class="pt-22">
+    <main id="main" class="flex flex-1 flex-col pt-22">
       <slot />
     </main>
     <footer class="bg-bg py-7.5 font-mono text-foot text-dim">

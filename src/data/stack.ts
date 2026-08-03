@@ -29,7 +29,7 @@ export const stack: StackGroup[] = [
   {
     id: "alsoUsed",
     tag: "ALSO USED",
-    label: "In one or more builds below",
+    label: "In one or more projects below",
     items: [
       "Next.js",
       "PostgreSQL",

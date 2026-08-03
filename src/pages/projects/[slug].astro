@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projects } from "../../data/projects";
+import { wrap, band, eyebrow, focusRing } from "../../lib/styles";
+
+export function getStaticPaths() {
+  return projects.map((p) => ({
+    params: { slug: p.slug },
+    props: { project: p },
+  }));
+}
+
+const { project } = Astro.props;
+const title = `${project.name} | Jorge Oliveira`;
+---
+
+<BaseLayout title={title} description={project.description}>
+  <section class="border-b border-line pb-27.5 max-[820px]:pb-20">
+    <div class={wrap}>
+      <div class={band}>
+        <a
+          href="/#projects"
+          class={`mb-8 inline-flex items-center gap-2 font-mono text-ui-sm tracking-[0.03em] text-primary transition hover:underline ${focusRing}`}
+        >
+          ← ALL PROJECTS
+        </a>
+        <div class={eyebrow}>PROJECT SPEC</div>
+        <div class="flex flex-wrap items-center gap-3">
+          <h1 class="text-h2 font-extrabold tracking-[-0.01em] text-ink">
+            {project.name}
+          </h1>
+          <span class="flex items-center gap-1.5 font-mono text-micro-sm text-dim">
+            <span class="h-1.25 w-1.25 rounded-full bg-good" />
+            {project.id} — LIVE
+          </span>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-1.5">
+          {project.tags.map((t) => (
+            <span class="border border-line px-2 py-1 font-mono text-micro text-ink-dim">
+              {t}
+            </span>
+          ))}
+        </div>
+        <p class="mt-6 max-w-130 font-sans text-body leading-[1.7] text-ink-dim">
+          {project.description}
+        </p>
+
+        <div class="mt-10 border-t border-line">
+          {project.summary && (
+            <div class="border-b border-line py-8">
+              <div class={eyebrow}>CONTEXT</div>
+              <p class="max-w-130 font-sans text-body leading-[1.7] text-ink-dim">
+                {project.summary}
+              </p>
+              {project.highlights && (
+                <ul class="mt-6 flex flex-col gap-3">
+                  {project.highlights.map((h) => (
+                    <li class="flex items-center gap-3 font-mono text-body-sm text-ink-dim">
+                      <span class="h-1.25 w-1.25 shrink-0 rounded-full bg-primary" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
+
+          {project.stack && (
+            <div class="border-b border-line py-8">
+              <div class={eyebrow}>STACK</div>
+              <div class="flex flex-wrap gap-2">
+                {project.stack.map((s) => (
+                  <span class="border border-line bg-surface px-3 py-2 font-mono text-label-sm text-ink-dim">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {project.links && (
+            <div class="border-b border-line py-8">
+              <div class={eyebrow}>LINKS</div>
+              <div class="flex max-w-130 flex-col gap-2">
+                {project.links.map((l) => (
+                  <a
+                    class={`flex items-center justify-between border border-line bg-surface px-4 py-3.5 font-mono text-body-sm text-ink transition hover:border-primary hover:text-primary ${focusRing}`}
+                    href={l.url}
+                    target="_blank"
+                  >
+                    {l.label} <span class="text-primary">↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

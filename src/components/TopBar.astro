@@ -19,22 +19,22 @@ const mobileLink =
       J. OLIVEIRA
     </div>
     <nav class="flex gap-10 max-[900px]:hidden" aria-label="Primary">
-      <a class={`${navLink} ${focusRing}`} href="#profile">01 PROFILE</a>
-      <a class={`${navLink} ${focusRing}`} href="#stack">02 STACK</a>
-      <a class={`${navLink} ${focusRing}`} href="#builds">03 BUILDS</a>
-      <a class={`${navLink} ${focusRing}`} href="#services">04 SERVICES</a>
-      <a class={`${navLink} ${focusRing}`} href="#contact">05 CONTACT</a>
+      <a class={`${navLink} ${focusRing}`} href="/#profile">01 PROFILE</a>
+      <a class={`${navLink} ${focusRing}`} href="/#stack">02 STACK</a>
+      <a class={`${navLink} ${focusRing}`} href="/#projects">03 PROJECTS</a>
+      <a class={`${navLink} ${focusRing}`} href="/#services">04 SERVICES</a>
+      <a class={`${navLink} ${focusRing}`} href="/#contact">05 CONTACT</a>
     </nav>
     <div
       class="flex items-center gap-2 font-mono text-body-sm font-medium tracking-[0.03em] text-ink"
     >
-      <span class="h-1.75 w-1.75 shrink-0 rounded-full bg-good"
-      ></span>
+      <span class="h-1.75 w-1.75 shrink-0 rounded-full bg-good"></span>
       {profile.status.toUpperCase()}
     </div>
     <button
       class={`group hidden h-8 w-8 flex-col cursor-pointer justify-center gap-1.25 border-none bg-transparent p-0 max-[900px]:flex ${focusRing}`}
       aria-label="Toggle menu"
+      aria-controls="mobile-menu"
       aria-expanded="false"
     >
       <span
@@ -51,14 +51,18 @@ const mobileLink =
   </div>
 </header>
 <nav
+  id="mobile-menu"
   class="fixed top-22 left-0 right-0 z-[49] hidden flex-col border-b border-line bg-surface px-0 py-2 pb-5 [&.active]:flex"
   aria-label="Mobile"
 >
   <div class={`${wrap} flex flex-col`}>
-    <a class={`${mobileLink} ${focusRing}`} href="#profile">01 PROFILE</a>
-    <a class={`${mobileLink} ${focusRing}`} href="#stack">02 STACK</a>
-    <a class={`${mobileLink} ${focusRing}`} href="#builds">03 BUILDS</a>
-    <a class={`${mobileLink} ${focusRing}`} href="#services">04 SERVICES</a>
-    <a class={`${mobileLink} ${focusRing}`} href="#contact">05 CONTACT</a>
+    <a class={`${mobileLink} ${focusRing}`} href="/#profile">01 PROFILE</a>
+    <a class={`${mobileLink} ${focusRing}`} href="/#stack">02 STACK</a>
+    <a class={`${mobileLink} ${focusRing}`} href="/#projects">03 PROJECTS</a>
+    <a class={`${mobileLink} ${focusRing}`} href="/#services">04 SERVICES</a>
+    <a class={`${mobileLink} ${focusRing}`} href="/#contact">05 CONTACT</a>
   </div>
 </nav>
+<script>
+  import "../lib/mobile-nav";
+</script>

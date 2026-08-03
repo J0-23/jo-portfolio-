@@ -1,10 +1,18 @@
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 export interface Project {
   id: string;
   name: string;
   description: string;
   tags: string[];
   slug: string;
-  link: string;
+  stack?: string[];
+  links?: ProjectLink[];
+  summary?: string;
+  highlights?: string[];
 }
 
 export const projects: Project[] = [
@@ -12,27 +20,22 @@ export const projects: Project[] = [
     id: "P-01",
     name: "Portfolio — performance build",
     description:
-      "This site, rebuilt for speed: React and shadcn removed, 303 dependencies dropped, CSS cut ~36%, zero client-side JavaScript, static prerender.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.",
     tags: ["Astro", "Tailwind", "Lighthouse"],
     slug: "portfolio-perf",
-    link: "#",
-  },
-  {
-    id: "P-05",
-    name: "Task Flow",
-    description:
-      "Task management with real-time insights and secure, intuitive workflows.",
-    tags: ["React", "Node.js"],
-    slug: "task-flow",
-    link: "#",
-  },
-  {
-    id: "P-06",
-    name: "Sentri-Auth",
-    description:
-      "Authentication & authorization API — role-based access, email verification, password reset.",
-    tags: ["Node.js", "JWT"],
-    slug: "sentri-auth",
-    link: "#",
+    stack: ["Astro", "Tailwind CSS", "TypeScript", "Vercel"],
+    links: [
+      { label: "Live preview", url: "#" },
+      { label: "Repository", url: "#" },
+    ],
+    summary:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    highlights: [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia",
+    ],
   },
 ];

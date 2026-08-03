@@ -1,15 +1,24 @@
 ---
 import { projects } from "../data/projects";
-import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } from "../lib/styles";
+import {
+  wrap,
+  band,
+  section,
+  eyebrow,
+  sectionHead,
+  sectionTitle,
+  sectionNote,
+  focusRing,
+} from "../lib/styles";
 ---
 
-<section class={section} id="builds">
+<section class={section} id="projects">
   <div class={wrap}>
     <div class={band}>
       <div class={sectionHead}>
         <div>
-          <div class={eyebrow}>BUILD LOG</div>
-          <h2 class={sectionTitle}>Shipped builds</h2>
+          <div class={eyebrow}>PROJECT LOG</div>
+          <h2 class={sectionTitle}>Shipped projects</h2>
         </div>
         <div class={sectionNote}>
           Click a card for the full spec — stack, description, live demo.
@@ -20,7 +29,12 @@ import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } 
       >
         {
           projects.map((p) => (
-            <article class="flex min-h-52.5 flex-col bg-surface p-7 transition hover:bg-surface-2">
+            <article class="relative flex min-h-52.5 flex-col bg-surface p-7 transition hover:bg-surface-2">
+              <a
+                href={`/projects/${p.slug}/`}
+                aria-label={`${p.name} case study`}
+                class={`absolute inset-0 ${focusRing}`}
+              />
               <div class="mb-4.5 flex items-start justify-between">
                 <span class="font-mono text-meta tracking-[0.06em] text-primary">
                   {p.id}
@@ -30,9 +44,7 @@ import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } 
                   LIVE
                 </span>
               </div>
-              <div class="mb-2.5 text-title font-bold text-ink">
-                {p.name}
-              </div>
+              <div class="mb-2.5 text-title font-bold text-ink">{p.name}</div>
               <div class="flex-1 text-ui leading-[1.55] text-ink-dim">
                 {p.description}
               </div>
