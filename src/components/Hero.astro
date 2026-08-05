@@ -4,103 +4,120 @@ import { stack } from "../data/stack";
 import { wrap, band, eyebrow, primaryBtn, secondaryBtn } from "../lib/styles";
 
 const core = stack.find((group) => group.id === "core")?.items ?? [];
-const learning = [
-  ...(stack.find((group) => group.id === "inProgress")?.items ?? []),
-  ...(stack.find((group) => group.id === "learning")?.items ?? []),
-];
-const stackList = core.map((item) => `"${item}"`).join(",");
+const learning = stack.find((group) => group.id === "learning")?.items ?? [];
+const stackList = core.map((item) => `"${item}"`).join(",\u200b");
 const learningList = learning.map((item) => `"${item}"`).join(",");
 const fullTime = profile.status.toLowerCase().includes("full-time");
 const freelance = profile.freelance;
-const slug = profile.name.toLowerCase().replace(/\s+/g, "-");
 
-const terminalKey = "text-dim";
+const terminalKey = "text-ink-dim";
 const terminalVal = "text-ink";
+const terminalCmd = "text-primary";
+const prompt = "PS C:\\Users\\jorge>";
+const readCmd = "Get-Content status.json";
 ---
 
 <section
   id="profile"
-  class="flex min-h-[92vh] items-center border-b border-line pt-27.5 pb-15 max-[820px]:pt-20 scroll-mt-22"
+  class="flex min-h-[92dvh] items-center border-b border-line pt-27.5 pb-15 max-[820px]:pt-20 scroll-mt-22"
 >
   <div class={wrap}>
     <div class={band}>
       <div
-        class="grid w-full grid-cols-[1.2fr_0.8fr] items-center gap-17.5 max-[820px]:grid-cols-1"
+        class="grid w-full grid-cols-[1.2fr_0.8fr] items-stretch gap-17.5 max-[820px]:grid-cols-1"
       >
         <div>
-          <div class={eyebrow}>SOFTWARE DEVELOPER</div>
-          <h1
-            class="text-h1 font-extrabold leading-none tracking-[-0.02em] text-ink"
-          >
-            Jorge<br />
-            <span class="text-primary">Oliveira</span>
+          <div class={`${eyebrow} animate-rise`}>FULL-STACK DEVELOPER</div>
+          <h1 class="text-h1 font-extrabold leading-none tracking-[-0.02em] text-ink">
+            <span class="block overflow-hidden pb-[0.2em] -mb-[0.2em]">
+              <span class="block animate-name [animation-delay:120ms]">Jorge</span>
+            </span>
+            <span class="block overflow-hidden pb-[0.2em] -mb-[0.2em]">
+              <span class="block animate-name text-primary [animation-delay:280ms]">
+                Oliveira
+              </span>
+            </span>
           </h1>
-          <p class="mt-5.5 max-w-130 text-hero-sub leading-[1.65] text-ink-dim">
+          <p
+            class="animate-rise [animation-delay:240ms] mt-5.5 max-w-130 text-hero-sub leading-[1.65] text-ink-dim"
+          >
             {profile.intro}
           </p>
-          <div class="mt-9 flex flex-wrap gap-3.5">
-            <a class={primaryBtn} href="#contact">Get in touch →</a>
-            <a class={secondaryBtn} href="#projects">See the work</a>
+          <div class="animate-rise [animation-delay:380ms] mt-9 flex flex-wrap gap-3.5">
+            <a class={primaryBtn} href="#contact" data-magnetic="0.18">Message me <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span></a>
+            <a class={secondaryBtn} href="#projects" data-magnetic="0.15">See the work</a>
+          </div>
+          <div
+            aria-hidden="true"
+            class="animate-rise [animation-delay:460ms] mt-11 border-t border-line pt-4.5 font-mono text-micro tracking-[0.14em] text-dim"
+          >
+            FAST · CLEAN · PERFORMANCE-FIRST
           </div>
         </div>
         <div
           aria-hidden="true"
-          class="border border-line bg-surface shadow-[0_1.25rem_3.125rem_rgba(20,24,29,0.05)]"
+          class="animate-rise-blur [animation-delay:160ms] flex h-full flex-col border border-line bg-[#eef1f6] shadow-[0_1rem_2.5rem_rgba(20,24,29,0.08)]"
         >
           <div
             class="flex items-center justify-between border-b border-line px-4 py-3"
           >
             <div class="flex gap-1.5">
-              <span class="h-2 w-2 rounded-full bg-line"></span>
-              <span class="h-2 w-2 rounded-full bg-line"></span>
-              <span class="h-2 w-2 rounded-full bg-line"></span>
+              <span class="h-2 w-2 rounded-full bg-[#ff5f57]"></span>
+              <span class="h-2 w-2 rounded-full bg-warn"></span>
+              <span class="h-2 w-2 rounded-full bg-good"></span>
             </div>
             <div class="font-mono text-micro tracking-[0.04em] text-dim">
-              status.sh
+              status.ps1
             </div>
           </div>
-          <div class="px-5 py-5.5 font-mono text-code leading-loose">
+          <div class="flex flex-1 flex-col px-5 py-5.5 font-mono text-[1rem] leading-loose">
             <div>
-              <span class={terminalKey}>$</span>
-              <span class={terminalVal}>whoami</span>
-            </div>
-            <div class={terminalVal}>{slug} — full-stack dev</div>
-            <div class="h-3.5"></div>
-            <div>
-              <span class={terminalKey}>$</span>
-              <span class={terminalVal}>cat status.json</span>
+              <span class={terminalCmd}>{prompt}</span>
+              <span class={terminalVal}> {readCmd}</span>
             </div>
             <div>
               <span class={terminalKey}>location:</span>
-              <span class={terminalVal}>"{profile.location}"</span>
+              <span class="relative inline-block">
+                <span class="invisible" aria-hidden="true">"{profile.location}"</span>
+                <span class="absolute inset-0" data-type-line data-type-delay="900">"{profile.location}"</span>
+              </span>
             </div>
             <div>
               <span class={terminalKey}>experience:</span>
-              <span class={terminalVal}>"{profile.experience}"</span>
+              <span class="relative inline-block">
+                <span class="invisible" aria-hidden="true">"{profile.experience}"</span>
+                <span class="absolute inset-0" data-type-line data-type-delay="1300">"{profile.experience}"</span>
+              </span>
             </div>
             <div>
-              <span class={terminalKey}>stack:</span>
-              <span class={terminalVal}>[{stackList}]</span>
+              <span class="relative block">
+                <span class="invisible" aria-hidden="true"><span class={terminalKey}>stack:</span>[{stackList}]</span>
+                <span class="absolute inset-0" data-type-line data-type-delay="1700"><span class={terminalKey}>stack:</span>[{stackList}]</span>
+              </span>
             </div>
             <div>
               <span class={terminalKey}>learning:</span>
-              <span class="text-primary">[{learningList}]</span>
+              <span class="relative inline-block text-primary">
+                <span class="invisible" aria-hidden="true">[{learningList}]</span>
+                <span class="absolute inset-0" data-type-line data-type-delay="2100">[{learningList}]</span>
+              </span>
             </div>
             <div>
               <span class={terminalKey}>full_time:</span>
-              <span class={fullTime ? "font-semibold text-good" : terminalVal}>
-                {fullTime}
+              <span class={`relative inline-block ${fullTime ? "font-semibold text-good" : terminalVal}`}>
+                <span class="invisible" aria-hidden="true">{fullTime}</span>
+                <span class="absolute inset-0" data-type-line data-type-delay="2500">{fullTime}</span>
               </span>
             </div>
             <div>
               <span class={terminalKey}>freelance:</span>
-              <span class={freelance ? "font-semibold text-good" : terminalVal}>
-                {freelance}
+              <span class={`relative inline-block ${freelance ? "font-semibold text-good" : terminalVal}`}>
+                <span class="invisible" aria-hidden="true">{freelance}</span>
+                <span class="absolute inset-0" data-type-line data-type-delay="2800">{freelance}</span>
               </span>
             </div>
-            <div class="h-3.5"></div>
-            <div>
-              <span class={terminalKey}>$</span>
+            <div class="mt-auto">
+              <span class={terminalCmd}>{prompt}</span>
               <span
                 class="inline-block h-3.5 w-1.75 animate-blink bg-primary align-middle motion-reduce:animate-none"
               ></span>

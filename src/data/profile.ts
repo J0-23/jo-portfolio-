@@ -11,6 +11,7 @@ export interface Profile {
   intro: string;
   experience: string;
   freelance: boolean;
+  email: string;
   socials: Social[];
 }
 
@@ -21,8 +22,9 @@ export const profile: Profile = {
   status: "Open to full-time roles",
   experience: "3+ years",
   freelance: true,
+  email: "hello@jorgeoliveira.dev",
   intro:
-    "I build pages and apps for a living. Obsessed with efficiency, load speed, keeping things light. Internal tools, personal projects, a bit of everything.",
+    "Full-stack developer in Portugal, 3+ years building React and Node.js apps. I care about load speed, clean typed code, and interfaces people actually enjoy using.",
   socials: [
     { label: "LinkedIn", url: "#" },
     { label: "GitHub", url: "#" },

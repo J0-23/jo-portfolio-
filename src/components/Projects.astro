@@ -14,22 +14,26 @@ import {
 
 <section class={section} id="projects">
   <div class={wrap}>
-    <div class={band}>
-      <div class={sectionHead}>
+    <div class={band} data-reveal="band">
+      <div class={sectionHead} data-reveal>
         <div>
           <div class={eyebrow}>PROJECT LOG</div>
           <h2 class={sectionTitle}>Shipped projects</h2>
         </div>
         <div class={sectionNote}>
-          Click a card for the full spec — stack, description, live demo.
+          Click a card for the full spec: stack, description, live demo.
         </div>
       </div>
       <div
         class="grid grid-cols-[repeat(auto-fill,minmax(18.75rem,1fr))] gap-px border border-line bg-line"
       >
         {
-          projects.map((p) => (
-            <article class="relative flex min-h-52.5 flex-col bg-surface p-7 transition hover:bg-surface-2">
+          projects.map((p, i) => (
+            <article
+              class="relative flex min-h-52.5 flex-col bg-surface p-7 transition hover:-translate-y-1 hover:bg-surface-2 hover:shadow-[0_0.875rem_2rem_rgba(20,24,29,0.08)]"
+              data-reveal="tile"
+              style={`--d:${i * 140}ms`}
+            >
               <a
                 href={`/projects/${p.slug}/`}
                 aria-label={`${p.name} case study`}

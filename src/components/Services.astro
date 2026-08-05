@@ -5,10 +5,10 @@ import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } 
 
 <section class={section} id="services">
   <div class={wrap}>
-    <div class={band}>
-      <div class={sectionHead}>
+    <div class={band} data-reveal="band">
+      <div class={sectionHead} data-reveal>
         <div>
-          <div class={eyebrow}>ALSO AVAILABLE — FREELANCE</div>
+          <div class={eyebrow}>ALSO AVAILABLE · FREELANCE</div>
           <h2 class={sectionTitle}>Taking on projects</h2>
         </div>
         <div class={sectionNote}>
@@ -18,8 +18,12 @@ import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } 
       </div>
       <div class="border-t border-line">
         {
-          services.map((s) => (
-            <div class="grid grid-cols-[5rem_1fr_1.4fr] items-baseline gap-6 border-b border-line py-6.5 max-[700px]:grid-cols-[2.5rem_1fr]">
+          services.map((s, i) => (
+            <div
+              class="grid grid-cols-[5rem_1fr_1.4fr] items-baseline gap-6 border-b border-line py-6.5 max-[700px]:grid-cols-[2.5rem_1fr]"
+              data-reveal
+              style={`--d:${i * 140}ms`}
+            >
               <span class="font-mono text-ui-sm text-primary">{s.no}</span>
               <h3 class="text-subtitle font-extrabold text-ink">{s.title}</h3>
               <p class="text-body-sm leading-[1.6] text-ink-dim max-[700px]:col-start-2">

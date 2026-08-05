@@ -1,14 +1,22 @@
 ---
 import { perf } from "../data/perf";
-import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } from "../lib/styles";
+import {
+  wrap,
+  band,
+  section,
+  eyebrow,
+  sectionHead,
+  sectionTitle,
+  sectionNote,
+} from "../lib/styles";
 
 const plain = perf.filter((m) => m.plain);
 ---
 
 <section class={section} id="speed">
   <div class={wrap}>
-    <div class={band}>
-      <div class={sectionHead}>
+    <div class={band} data-reveal="band">
+      <div class={sectionHead} data-reveal>
         <div>
           <div class={eyebrow}>SPEED SPEC</div>
           <h2 class={sectionTitle}>Performance by design</h2>
@@ -21,8 +29,12 @@ const plain = perf.filter((m) => m.plain);
         class="grid grid-cols-[repeat(auto-fill,minmax(9.375rem,1fr))] gap-px border border-line bg-line"
       >
         {
-          perf.map((m) => (
-            <div class="flex min-h-18 flex-col justify-between gap-2 bg-surface p-4 font-mono">
+          perf.map((m, i) => (
+            <div
+              class="flex min-h-18 flex-col justify-between gap-2 bg-surface p-4 font-mono"
+              data-reveal
+              style={`--d:${i * 100}ms`}
+            >
               <span class="flex items-center gap-1.5">
                 <span
                   class={`h-1.25 w-1.25 rounded-full ${m.value === "—" ? "bg-line" : "bg-good"}`}
@@ -41,7 +53,7 @@ const plain = perf.filter((m) => m.plain);
       <div
         class="mt-10 grid grid-cols-[1.1fr_0.9fr] items-start gap-15 max-[820px]:grid-cols-1"
       >
-        <div>
+        <div data-reveal>
           <div class={eyebrow}>PLAIN ENGLISH</div>
           <p class="font-sans text-body leading-[1.7] text-ink-dim">
             If those numbers look like jargon, here's the plain version:{" "}
@@ -51,8 +63,11 @@ const plain = perf.filter((m) => m.plain);
             ><br />Even on a slow connection, it loads about as fast as on a
             fast one.
           </p>
+          <p class="mt-5 font-sans text-subtitle font-extrabold text-ink">
+            Elegant, yet <span class="text-primary">efficient</span>.
+          </p>
         </div>
-        <div>
+        <div data-reveal style="--d:80ms">
           <div class="border-t border-line">
             {
               plain.map((m) => (

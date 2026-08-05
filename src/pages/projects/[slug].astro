@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 import { projects } from "../../data/projects";
 import { wrap, band, eyebrow, focusRing } from "../../lib/styles";
 
@@ -31,7 +32,7 @@ const title = `${project.name} | Jorge Oliveira`;
           </h1>
           <span class="flex items-center gap-1.5 font-mono text-micro-sm text-dim">
             <span class="h-1.25 w-1.25 rounded-full bg-good" />
-            {project.id} — LIVE
+            {project.id} · LIVE
           </span>
         </div>
         <div class="mt-4 flex flex-wrap gap-1.5">
@@ -45,6 +46,20 @@ const title = `${project.name} | Jorge Oliveira`;
           {project.description}
         </p>
 
+        {project.screenshot && (
+          <Image
+            src={project.screenshot}
+            alt={`${project.name} screenshot`}
+            format="webp"
+            widths={[768, 1024, 1536, 2048]}
+            sizes="100vw"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            class="mt-8 h-auto w-full border border-line bg-surface-2 object-cover"
+          />
+        )}
+
         <div class="mt-10 border-t border-line">
           {project.summary && (
             <div class="border-b border-line py-8">
@@ -52,6 +67,11 @@ const title = `${project.name} | Jorge Oliveira`;
               <p class="max-w-130 font-sans text-body leading-[1.7] text-ink-dim">
                 {project.summary}
               </p>
+              {project.outcome && (
+                <p class="mt-5 max-w-130 font-mono text-body-sm leading-[1.7] text-ink">
+                  <span class="text-primary">OUTCOME:</span> {project.outcome}
+                </p>
+              )}
               {project.highlights && (
                 <ul class="mt-6 flex flex-col gap-3">
                   {project.highlights.map((h) => (

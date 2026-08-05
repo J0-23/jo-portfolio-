@@ -11,11 +11,11 @@ const channels: Record<string, string> = {
 
 <section class={sectionBase} id="contact">
   <div class={wrap}>
-    <div class={band}>
+    <div class={band} data-reveal="band">
       <div
         class="grid grid-cols-[1.1fr_0.9fr] items-end gap-15 max-[820px]:grid-cols-1"
       >
-        <div>
+        <div data-reveal>
           <div class={eyebrow}>TRANSMIT</div>
           <h2
             class="text-h3 font-extrabold leading-[1.05] tracking-[-0.01em] text-ink"
@@ -28,7 +28,7 @@ const channels: Record<string, string> = {
             to look first.
           </p>
         </div>
-        <div class="border border-line bg-surface p-8">
+        <div class="border border-line bg-surface p-8" data-reveal style="--d:180ms">
           {
             profile.socials.map((s) => (
               <div class="flex items-center justify-between border-b border-line py-4 last:border-b-0">
@@ -36,17 +36,26 @@ const channels: Record<string, string> = {
                   {channels[s.label] ?? "SOCIAL"}
                 </span>
                 <a
-                  class={`flex items-center gap-2.5 font-mono text-ui text-ink transition hover:text-primary ${focusRing}`}
+                  class={`group flex items-center gap-2.5 font-mono text-ui text-ink transition hover:text-primary ${focusRing}`}
                   href={s.url}
                   target="_blank"
                 >
-                  {s.label} <span class="text-primary">↗</span>
+                  {s.label} <span class="text-primary transition-transform group-hover:translate-x-0.5">↗</span>
                 </a>
               </div>
             ))
           }
-          <a class={`${primaryBtn} mt-7`} href="#" target="_blank"
-            >Message me on LinkedIn →</a
+          <div class="flex items-center justify-between border-b border-line py-4 last:border-b-0">
+            <span class="font-mono text-meta tracking-[0.06em] text-dim">EMAIL</span>
+            <a
+              class={`group flex items-center gap-2.5 font-mono text-ui text-ink transition hover:text-primary ${focusRing}`}
+              href={`mailto:${profile.email}`}
+            >
+              {profile.email}
+            </a>
+          </div>
+          <a class={`${primaryBtn} mt-7`} href="#" target="_blank" data-magnetic="0.18"
+            >Let's talk. I'll reply within 24h. <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span></a
           >
         </div>
       </div>

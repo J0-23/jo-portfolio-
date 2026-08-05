@@ -36,10 +36,130 @@
   --text-h3: clamp(2.375rem, 5vw, 3.75rem);
 
   --animate-blink: blink 1.1s steps(1) infinite;
+  --animate-rise: rise 0.9s var(--ease-snap) both;
+  --animate-rise-in: rise-in 0.9s var(--ease-snap) both;
+  --animate-menu-in: menu-in 0.4s var(--ease-out) both;
+  --animate-name: name 1.4s var(--ease-snap) both;
+  --animate-rise-blur: rise-blur 1.2s var(--ease-out) both;
+
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
 
   @keyframes blink {
     50% {
       opacity: 0;
     }
   }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+  }
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateX(2rem);
+    }
+  }
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.75rem);
+    }
+  }
+  @keyframes name {
+    from {
+      opacity: 0;
+      transform: translateY(0.9em);
+      filter: blur(0.35rem);
+    }
+  }
+  @keyframes rise-blur {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+      filter: blur(0.4rem);
+    }
+  }
+}
+
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(1.75rem);
+    transition:
+      opacity 1s var(--ease-out),
+      transform 1s var(--ease-out);
+    transition-delay: var(--d, 0ms);
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: none;
+  }
+  [data-reveal="band"] {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1.2s var(--ease-out);
+    transition-delay: var(--d, 0ms);
+  }
+  [data-reveal="band"].revealed {
+    clip-path: inset(0 0 0% 0);
+  }
+  [data-reveal="tile"] {
+    opacity: 0;
+    transform: translateY(1.25rem) scale(0.98);
+    transition:
+      opacity 1s var(--ease-out),
+      transform 1s var(--ease-out);
+    transition-delay: var(--d, 0ms);
+  }
+  [data-reveal="tile"].revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+}
+
+.sheen {
+  position: relative;
+  overflow: hidden;
+}
+.sheen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: translateX(-130%) skewX(-15deg);
+  transition: transform 0.6s var(--ease-out);
+}
+.sheen:hover::before {
+  transform: translateX(330%) skewX(-15deg);
 }

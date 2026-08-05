@@ -1,4 +1,4 @@
-export type StackGroupId = "core" | "inProgress" | "learning" | "alsoUsed";
+export type StackGroupId = "core" | "learning" | "alsoUsed";
 
 export interface StackGroup {
   id: StackGroupId;
@@ -12,18 +12,12 @@ export const stack: StackGroup[] = [
     id: "core",
     tag: "CORE",
     label: "Daily use, production-ready",
-    items: ["JavaScript", "React", "Node.js", "Tailwind CSS"],
-  },
-  {
-    id: "inProgress",
-    tag: "IN PROGRESS",
-    label: "Used in real projects, deepening now",
-    items: ["TypeScript"],
+    items: ["JavaScript", "React", "Node.js", "TypeScript"],
   },
   {
     id: "learning",
     tag: "LEARNING",
-    label: "New — building toward Java-based roles",
+    label: "New. Building toward Java-based roles.",
     items: ["Java"],
   },
   {

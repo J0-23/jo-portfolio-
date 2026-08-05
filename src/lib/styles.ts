@@ -27,7 +27,7 @@ export const sectionNote =
 export const focusRing =
   "focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
-export const primaryBtn = `inline-flex items-center gap-2.5 bg-primary text-white font-mono font-semibold text-ui-sm px-5.5 py-3.5 tracking-[0.02em] transition hover:-translate-y-0.5 hover:shadow-[0_0.625rem_1.5rem_rgba(36,85,201,0.22)] ${focusRing}`;
+export const primaryBtn = `sheen inline-flex group items-center gap-2.5 bg-primary text-white font-mono font-semibold text-ui-sm px-5.5 py-3.5 tracking-[0.02em] transition hover:-translate-y-0.5 hover:shadow-[0_0.625rem_1.5rem_rgba(36,85,201,0.22)] active:translate-y-0 active:scale-[0.98] ${focusRing}`;
 
 export const secondaryBtn =
-  "inline-flex items-center gap-2.5 border border-line text-ink font-mono text-ui-sm px-5 py-3.25 transition hover:border-primary hover:text-primary focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
+  "inline-flex group items-center gap-2.5 border border-line text-ink font-mono text-ui-sm px-5 py-3.25 transition hover:border-primary hover:text-primary active:translate-y-0 active:scale-[0.98] focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";

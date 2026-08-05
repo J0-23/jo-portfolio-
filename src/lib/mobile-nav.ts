@@ -7,6 +7,7 @@ const setOpen = (open: boolean) => {
   btn?.classList.toggle("active", open);
   menu?.classList.toggle("active", open);
   btn?.setAttribute("aria-expanded", String(open));
+  document.body.style.overflow = open ? "hidden" : "";
 };
 
 btn?.addEventListener("click", () => {

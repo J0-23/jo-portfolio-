@@ -4,7 +4,6 @@ import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } 
 
 const tagClass: Record<string, string> = {
   core: "text-good border-good",
-  inProgress: "text-primary border-primary",
   learning: "text-warn border-warn",
   alsoUsed: "text-dim border-line",
 };
@@ -12,22 +11,26 @@ const tagClass: Record<string, string> = {
 
 <section class={section} id="stack">
   <div class={wrap}>
-    <div class={band}>
-      <div class={sectionHead}>
+    <div class={band} data-reveal="band">
+      <div class={sectionHead} data-reveal>
         <div>
           <div class={eyebrow}>SPEC SHEET</div>
           <h2 class={sectionTitle}>Where things stand</h2>
         </div>
         <div class={sectionNote}>
-          Status shown per skill — not everything is at the same stage, and
+          Status shown per skill. Not everything is at the same stage, and
           that's on purpose.
         </div>
       </div>
 
       {
-        stack.map((group) => (
+        stack.map((group, gi) => (
           <div class="mb-10 last:mb-0">
-            <div class="mb-3.5 flex items-center gap-3 font-mono text-label-sm text-ink-dim">
+            <div
+              class="mb-3.5 flex items-center gap-3 font-mono text-label-sm text-ink-dim"
+              data-reveal
+              style={`--d:${gi * 120}ms`}
+            >
               <span
                 class={`border px-2.25 py-1 font-mono text-micro font-semibold tracking-[0.06em] ${tagClass[group.id]}`}
               >
@@ -37,16 +40,24 @@ const tagClass: Record<string, string> = {
             </div>
             {group.id === "alsoUsed" ? (
               <div class="flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <span class="border border-line bg-surface px-3 py-2 font-mono text-label-sm text-ink-dim">
+                {group.items.map((item, i) => (
+                  <span
+                    class="border border-line bg-surface px-3 py-2 font-mono text-label-sm text-ink-dim"
+                    data-reveal
+                    style={`--d:${i * 90}ms`}
+                  >
                     {item}
                   </span>
                 ))}
               </div>
             ) : (
               <div class="grid grid-cols-[repeat(auto-fill,minmax(9.375rem,1fr))] gap-px border border-line bg-line">
-                {group.items.map((item) => (
-                  <div class="flex items-center justify-between bg-surface p-4 font-mono text-code text-ink-dim transition hover:bg-surface-2 hover:text-ink">
+                {group.items.map((item, i) => (
+                  <div
+                    class="flex items-center justify-between bg-surface p-4 font-mono text-code text-ink-dim transition hover:bg-surface-2 hover:text-ink"
+                    data-reveal="tile"
+                    style={`--d:${i * 90}ms`}
+                  >
                     <span>{item}</span>
                   </div>
                 ))}
