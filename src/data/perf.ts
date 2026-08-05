@@ -7,17 +7,17 @@ export interface PerfMetric {
 export const perf: PerfMetric[] = [
   {
     label: "LCP",
-    value: "1.5s",
+    value: "1.1s",
     plain: "How fast the main content appears on screen",
   },
   {
     label: "FCP",
-    value: "1.4s",
+    value: "1.1s",
     plain: "When the page starts showing anything at all",
   },
   {
     label: "CLS",
-    value: "0.09",
+    value: "0",
     plain: "Whether the page jumps around while loading",
   },
   {
@@ -26,8 +26,8 @@ export const perf: PerfMetric[] = [
     plain: "How long the page feels frozen before responding",
   },
   { label: "JavaScript", value: "0 KB" },
-  { label: "CSS", value: "7.6 KB" },
+  { label: "CSS", value: "6.9 KB" },
   { label: "HTML", value: "5.9 KB" },
-  { label: "Requests", value: "9" },
+  { label: "Requests", value: "7" },
   { label: "Build time", value: "~0.9s" },
 ];

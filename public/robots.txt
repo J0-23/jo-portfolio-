@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jorgeoliveira23.vercel.app/sitemap-index.xml
