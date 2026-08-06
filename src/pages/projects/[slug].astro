@@ -21,19 +21,36 @@ const title = `${project.name} | Jorge Oliveira`;
       <div class={band}>
         <a
           href="/#projects"
-          class={`mb-8 inline-flex items-center gap-2 font-mono text-ui-sm tracking-[0.03em] text-primary transition hover:underline ${focusRing}`}
+          class={`mb-8 inline-flex items-center gap-2 rounded px-3 py-2 font-mono text-ui-sm tracking-[0.03em] text-primary transition hover:underline ${focusRing}`}
         >
           ← ALL PROJECTS
         </a>
         <div class={eyebrow}>PROJECT SPEC</div>
-        <div class="flex flex-wrap items-center gap-3">
-          <h1 class="text-h2 font-extrabold tracking-[-0.01em] text-ink">
-            {project.name}
-          </h1>
-          <span class="flex items-center gap-1.5 font-mono text-micro-sm text-dim">
-            <span class="h-1.25 w-1.25 rounded-full bg-good" />
-            {project.id} · LIVE
-          </span>
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <h1 class="text-h2 font-extrabold tracking-[-0.01em] text-ink">
+              {project.name}
+            </h1>
+            <span class="font-mono text-micro-sm text-dim">{project.category}</span>
+            <span class="flex items-center gap-1.5 font-mono text-micro-sm text-dim">
+              <span class="h-1.25 w-1.25 rounded-full bg-good" />
+              {project.id} · LIVE
+            </span>
+          </div>
+          {project.links && project.links.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {project.links.map((l) => (
+                <a
+                  class={`inline-flex items-center gap-1.5 border border-line bg-surface px-3 py-1.5 font-mono text-micro-sm text-ink transition hover:border-primary hover:text-primary ${focusRing}`}
+                  href={l.url}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {l.label} <span class="text-primary">↗</span><span class="sr-only">(opens in a new tab)</span>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
         <div class="mt-4 flex flex-wrap gap-1.5">
           {project.tags.map((t) => (
@@ -56,14 +73,14 @@ const title = `${project.name} | Jorge Oliveira`;
             loading="eager"
             fetchpriority="high"
             decoding="async"
-            class="mt-8 h-auto w-full border border-line bg-surface-2 object-cover"
+            class="mt-8 aspect-[1710/694] w-full border border-line bg-surface-2 object-cover"
           />
         )}
 
         <div class="mt-10 border-t border-line">
           {project.summary && (
             <div class="border-b border-line py-8">
-              <div class={eyebrow}>CONTEXT</div>
+              <h2 class={eyebrow}>CONTEXT</h2>
               <p class="max-w-130 font-sans text-body leading-[1.7] text-ink-dim">
                 {project.summary}
               </p>
@@ -87,7 +104,7 @@ const title = `${project.name} | Jorge Oliveira`;
 
           {project.stack && (
             <div class="border-b border-line py-8">
-              <div class={eyebrow}>STACK</div>
+              <h2 class={eyebrow}>STACK</h2>
               <div class="flex flex-wrap gap-2">
                 {project.stack.map((s) => (
                   <span class="border border-line bg-surface px-3 py-2 font-mono text-label-sm text-ink-dim">
@@ -100,15 +117,16 @@ const title = `${project.name} | Jorge Oliveira`;
 
           {project.links && (
             <div class="border-b border-line py-8">
-              <div class={eyebrow}>LINKS</div>
+              <h2 class={eyebrow}>LINKS</h2>
               <div class="flex max-w-130 flex-col gap-2">
                 {project.links.map((l) => (
                   <a
                     class={`flex items-center justify-between border border-line bg-surface px-4 py-3.5 font-mono text-body-sm text-ink transition hover:border-primary hover:text-primary ${focusRing}`}
                     href={l.url}
                     target="_blank"
+                    rel="noopener"
                   >
-                    {l.label} <span class="text-primary">↗</span>
+                    {l.label} <span class="text-primary">↗</span><span class="sr-only">(opens in a new tab)</span>
                   </a>
                 ))}
               </div>

@@ -6,7 +6,7 @@
   --color-surface-2: #f1efe6;
   --color-ink: #14181d;
   --color-ink-dim: #5b6570;
-  --color-good: #15803d;
+  --color-good: #14682f;
   --color-line: #dde1e8;
   --color-dim: #667085;
   --color-grid-line: rgba(36, 85, 201, 0.08);
@@ -121,6 +121,18 @@
     opacity: 1;
     transform: none;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

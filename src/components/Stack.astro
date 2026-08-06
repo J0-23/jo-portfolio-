@@ -4,9 +4,27 @@ import { wrap, band, section, eyebrow, sectionHead, sectionTitle, sectionNote } 
 
 const tagClass: Record<string, string> = {
   core: "text-good border-good",
-  learning: "text-warn border-warn",
+  learning: "text-primary border-primary",
   alsoUsed: "text-dim border-line",
 };
+
+const shades = [
+  "bg-[rgba(36,85,201,0.08)]",
+  "bg-[rgba(36,85,201,0.15)]",
+  "bg-[rgba(36,85,201,0.22)]",
+  "bg-[rgba(36,85,201,0.29)]",
+  "bg-[rgba(36,85,201,0.36)]",
+  "bg-[rgba(36,85,201,0.43)]",
+  "bg-[rgba(36,85,201,0.5)]",
+  "bg-[rgba(36,85,201,0.57)]",
+];
+
+const starts: Record<string, number> = {};
+let tileIndex = 0;
+for (const group of stack) {
+  starts[group.id] = tileIndex;
+  tileIndex += group.items.length;
+}
 ---
 
 <section class={section} id="stack">
@@ -42,7 +60,7 @@ const tagClass: Record<string, string> = {
               <div class="flex flex-wrap gap-2">
                 {group.items.map((item, i) => (
                   <span
-                    class="border border-line bg-surface px-3 py-2 font-mono text-label-sm text-ink-dim"
+                    class={`${shades[(starts[group.id] + i) % shades.length]} cursor-default border border-line px-3 py-2 font-mono text-ui-sm text-ink transition hover:bg-[#2455c9] hover:text-white`}
                     data-reveal
                     style={`--d:${i * 90}ms`}
                   >
@@ -54,7 +72,7 @@ const tagClass: Record<string, string> = {
               <div class="grid grid-cols-[repeat(auto-fill,minmax(9.375rem,1fr))] gap-px border border-line bg-line">
                 {group.items.map((item, i) => (
                   <div
-                    class="flex items-center justify-between bg-surface p-4 font-mono text-code text-ink-dim transition hover:bg-surface-2 hover:text-ink"
+                    class={`${shades[(starts[group.id] + i) % shades.length]} cursor-default flex items-center justify-between p-4 font-mono text-ui-sm text-ink transition hover:bg-[#2455c9] hover:text-white`}
                     data-reveal="tile"
                     style={`--d:${i * 90}ms`}
                   >

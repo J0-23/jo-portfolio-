@@ -24,7 +24,7 @@ export const profile: Profile = {
   freelance: true,
   email: "hello@jorgeoliveira.dev",
   intro:
-    "Full-stack developer in Portugal, 3+ years building React and Node.js apps. I care about load speed, clean typed code, and interfaces people actually enjoy using.",
+    "Full-stack developer in Portugal, 3+ years building React and Node.js apps. I care about load speed, clean typed code, and making things better.",
   socials: [
     { label: "LinkedIn", url: "#" },
     { label: "GitHub", url: "#" },

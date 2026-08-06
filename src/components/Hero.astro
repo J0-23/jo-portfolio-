@@ -28,12 +28,18 @@ const readCmd = "Get-Content status.json";
       >
         <div>
           <div class={`${eyebrow} animate-rise`}>FULL-STACK DEVELOPER</div>
-          <h1 class="text-h1 font-extrabold leading-none tracking-[-0.02em] text-ink">
+          <h1
+            class="text-h1 font-extrabold leading-none tracking-[-0.02em] text-ink"
+          >
             <span class="block overflow-hidden pb-[0.2em] -mb-[0.2em]">
-              <span class="block animate-name [animation-delay:120ms]">Jorge</span>
+              <span class="block animate-name [animation-delay:120ms]"
+                >Jorge</span
+              >
             </span>
             <span class="block overflow-hidden pb-[0.2em] -mb-[0.2em]">
-              <span class="block animate-name text-primary [animation-delay:280ms]">
+              <span
+                class="block animate-name text-primary [animation-delay:280ms]"
+              >
                 Oliveira
               </span>
             </span>
@@ -43,15 +49,24 @@ const readCmd = "Get-Content status.json";
           >
             {profile.intro}
           </p>
-          <div class="animate-rise [animation-delay:380ms] mt-9 flex flex-wrap gap-3.5">
-            <a class={primaryBtn} href="#contact" data-magnetic="0.18">Message me <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span></a>
-            <a class={secondaryBtn} href="#projects" data-magnetic="0.15">See the work</a>
+          <div
+            class="animate-rise [animation-delay:380ms] mt-9 flex flex-wrap gap-3.5"
+          >
+            <a class={primaryBtn} href="#contact" data-magnetic="0.18"
+              >Message me <span
+                class="inline-block transition-transform group-hover:translate-x-0.5"
+                >→</span
+              ></a
+            >
+            <a class={secondaryBtn} href="#projects" data-magnetic="0.15"
+              >See the work</a
+            >
           </div>
           <div
             aria-hidden="true"
-            class="animate-rise [animation-delay:460ms] mt-11 border-t border-line pt-4.5 font-mono text-micro tracking-[0.14em] text-dim"
+            class="animate-rise [animation-delay:460ms] mt-11 border-t border-line pt-4.5 text-hero-sub leading-[1.65] text-ink-dim"
           >
-            FAST · CLEAN · PERFORMANCE-FIRST
+            Open to full-time roles & freelance.
           </div>
         </div>
         <div
@@ -70,7 +85,9 @@ const readCmd = "Get-Content status.json";
               status.ps1
             </div>
           </div>
-          <div class="flex flex-1 flex-col px-5 py-5.5 font-mono text-[1rem] leading-loose">
+          <div
+            class="flex flex-1 flex-col px-5 py-5.5 font-mono text-[1rem] leading-loose"
+          >
             <div>
               <span class={terminalCmd}>{prompt}</span>
               <span class={terminalVal}> {readCmd}</span>
@@ -78,42 +95,79 @@ const readCmd = "Get-Content status.json";
             <div>
               <span class={terminalKey}>location:</span>
               <span class="relative inline-block">
-                <span class="invisible" aria-hidden="true">"{profile.location}"</span>
-                <span class="absolute inset-0" data-type-line data-type-delay="900">"{profile.location}"</span>
+                <span class="invisible" aria-hidden="true"
+                  >"{profile.location}"</span
+                >
+                <span
+                  class="absolute inset-0"
+                  data-type-line
+                  data-type-delay="900">"{profile.location}"</span
+                >
               </span>
             </div>
             <div>
               <span class={terminalKey}>experience:</span>
               <span class="relative inline-block">
-                <span class="invisible" aria-hidden="true">"{profile.experience}"</span>
-                <span class="absolute inset-0" data-type-line data-type-delay="1300">"{profile.experience}"</span>
+                <span class="invisible" aria-hidden="true"
+                  >"{profile.experience}"</span
+                >
+                <span
+                  class="absolute inset-0"
+                  data-type-line
+                  data-type-delay="1300">"{profile.experience}"</span
+                >
               </span>
             </div>
             <div>
               <span class="relative block">
-                <span class="invisible" aria-hidden="true"><span class={terminalKey}>stack:</span>[{stackList}]</span>
-                <span class="absolute inset-0" data-type-line data-type-delay="1700"><span class={terminalKey}>stack:</span>[{stackList}]</span>
+                <span class="invisible" aria-hidden="true"
+                  ><span class={terminalKey}>stack:</span>[{stackList}]</span
+                >
+                <span
+                  class="absolute inset-0"
+                  data-type-line
+                  data-type-delay="1700"
+                  ><span class={terminalKey}>stack:</span>[{stackList}]</span
+                >
               </span>
             </div>
             <div>
               <span class={terminalKey}>learning:</span>
               <span class="relative inline-block text-primary">
-                <span class="invisible" aria-hidden="true">[{learningList}]</span>
-                <span class="absolute inset-0" data-type-line data-type-delay="2100">[{learningList}]</span>
+                <span class="invisible" aria-hidden="true"
+                  >[{learningList}]</span
+                >
+                <span
+                  class="absolute inset-0"
+                  data-type-line
+                  data-type-delay="2100">[{learningList}]</span
+                >
               </span>
             </div>
             <div>
               <span class={terminalKey}>full_time:</span>
-              <span class={`relative inline-block ${fullTime ? "font-semibold text-good" : terminalVal}`}>
+              <span
+                class={`relative inline-block ${fullTime ? "font-semibold text-good" : terminalVal}`}
+              >
                 <span class="invisible" aria-hidden="true">{fullTime}</span>
-                <span class="absolute inset-0" data-type-line data-type-delay="2500">{fullTime}</span>
+                <span
+                  class="absolute inset-0"
+                  data-type-line
+                  data-type-delay="2500">{fullTime}</span
+                >
               </span>
             </div>
             <div>
               <span class={terminalKey}>freelance:</span>
-              <span class={`relative inline-block ${freelance ? "font-semibold text-good" : terminalVal}`}>
+              <span
+                class={`relative inline-block ${freelance ? "font-semibold text-good" : terminalVal}`}
+              >
                 <span class="invisible" aria-hidden="true">{freelance}</span>
-                <span class="absolute inset-0" data-type-line data-type-delay="2800">{freelance}</span>
+                <span
+                  class="absolute inset-0"
+                  data-type-line
+                  data-type-delay="2800">{freelance}</span
+                >
               </span>
             </div>
             <div class="mt-auto">

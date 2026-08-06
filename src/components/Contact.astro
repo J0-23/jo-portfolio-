@@ -20,7 +20,7 @@ const channels: Record<string, string> = {
           <h2
             class="text-h3 font-extrabold leading-[1.05] tracking-[-0.01em] text-ink"
           >
-            Let's talk<br />shop<span class="text-primary">.</span>
+            Let's talk<span class="text-primary">.</span>
           </h2>
           <p class="mt-5 max-w-110 text-body text-ink-dim">
             Hiring, or have a project in mind? Message me on LinkedIn and I'll
@@ -39,8 +39,9 @@ const channels: Record<string, string> = {
                   class={`group flex items-center gap-2.5 font-mono text-ui text-ink transition hover:text-primary ${focusRing}`}
                   href={s.url}
                   target="_blank"
+                  rel="noopener"
                 >
-                  {s.label} <span class="text-primary transition-transform group-hover:translate-x-0.5">↗</span>
+                  {s.label} <span class="text-primary transition-transform group-hover:translate-x-0.5">↗</span><span class="sr-only">(opens in a new tab)</span>
                 </a>
               </div>
             ))
@@ -54,7 +55,7 @@ const channels: Record<string, string> = {
               {profile.email}
             </a>
           </div>
-          <a class={`${primaryBtn} mt-7`} href="#" target="_blank" data-magnetic="0.18"
+          <a class={`${primaryBtn} mt-7`} href="#" target="_blank" rel="noopener" style="transform:none"
             >Let's talk. I'll reply within 24h. <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span></a
           >
         </div>
